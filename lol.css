@@ -1,0 +1,47 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.jumbotron {
+    background-image: url('images/computing_background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    margin-bottom: 0;
+    padding: 100px 25px;
+}
+
+.container h2 {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.ar-container {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+
+footer p {
+    margin-bottom: 0;
+}

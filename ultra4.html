@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AR with AR.js</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.6/aframe/build/aframe-ar.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .marker-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .marker-container img {
+            width: 200px;
+        }
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a-scene embedded arjs>
+        <!-- Маркер -->
+        <a-marker type="pattern" url="markers/pattern-marker.patt">
+            <!-- 3D модель с добавлением возможностей для взаимодействия -->
+            <a-entity id="cartoon-model" gltf-model="url(models/nexgen_nx586_p90_socket463.glb)" scale="0.5 0.5 0.5" position="0 0 0"
+                      rotation="0 0 0"
+                      gesture-handler>
+            </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- Отображение изображения маркера для удобства -->
+    <div class="marker-container" id="marker-container">
+        <img src="markers/pattern-marker.png" alt="Pattern Marker">
+        <p>Камераны осы суретке бағыттаңыз</p>
+    </div>
+
+    <!-- Кнопка для перехода на следующую страницу -->
+    <div class="button-container">
+        <button onclick="location.href='ultra5.html'">Келесі бетке өтіңіз</button>
+    </div>
+
+    <script>
+        // Компонент для обработки жестов
+        AFRAME.registerComponent('gesture-handler', {
+            schema: {
+                enabled: {default: true}
+            },
+            init: function () {
+                this.handleScale = this.handleScale.bind(this);
+                this.handleRotation = this.handleRotation.bind(this);
+                this.isPinching = false;
+                this.initialDistance = null;
+                this.initialScale = null;
+
+                this.el.sceneEl.canvas.addEventListener('touchstart', this.handleRotation);
+                this.el.sceneEl.canvas.addEventListener('touchmove', this.handleScale);
+            },
+            remove: function () {
+                this.el.sceneEl.canvas.removeEventListener('touchstart', this.handleRotation);
+                this.el.sceneEl.canvas.removeEventListener('touchmove', this.handleScale);
+            },
+            handleRotation: function (event) {
+                if (event.touches.length === 1) {
+                    const touch = event.touches[0];
+                    this.initialRotation = this.el.object3D.rotation.y;
+                    this.initialTouch = touch.clientX;
+                }
+            },
+            handleScale: function (event) {
+                if (event.touches.length === 2) {
+                    const touch1 = event.touches[0];
+                    const touch2 = event.touches[1];
+                    const dx = touch1.clientX - touch2.clientX;
+                    const dy = touch1.clientY - touch2.clientY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (!this.isPinching) {
+                        this.isPinching = true;
+                        this.initialDistance = distance;
+                        this.initialScale = this.el.object3D.scale.x;
+                    } else {
+                        const scaleFactor = distance / this.initialDistance;
+                        this.el.object3D.scale.set(
+                            this.initialScale * scaleFactor,
+                            this.initialScale * scaleFactor,
+                            this.initialScale * scaleFactor
+                        );
+                    }
+                } else {
+                    this.isPinching = false;
+                }
+            }
+        });
+
+        // Скрытие маркера через 5 секунд
+        setTimeout(() => {
+            document.getElementById('marker-container').style.display = 'none';
+        }, 5000); // 5000 миллисекунд = 5 секунд
+    </script>
+</body>
+</html>

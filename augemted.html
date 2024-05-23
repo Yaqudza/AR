@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Museum</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">History of Computing</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#welcome">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#eras">Eras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#personalities">Personalities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#inventions">Inventions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#3d-model">3D Model</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <h1 class="text-center">3D Museum</h1>
+        <p class="lead text-center">Explore various historical computers and boards in 3D format and augmented reality using image markers.</p>
+
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <h3>Model 1</h3>
+                <img src="markers/pattern-marker.png" alt="Pattern Marker 1" style="width: 100px;">
+                <div class="ar-container">
+                    <a-scene embedded arjs='sourceType: "image"; sourceUrl: "markers/pattern-marker1.png"'>
+                        <a-assets>
+                            <a-asset-item id="model1" src="models/AWP.glb"></a-asset-item>
+                        </a-assets>
+                        <a-marker preset="custom" url="markers/pattern-marker.patt">
+                            <a-entity gltf-model="#model1" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+                        </a-marker>
+                        <a-entity camera></a-entity>
+                    </a-scene>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Model 2</h3>
+                <img src="markers/pattern-marker2.png" alt="Pattern Marker 2" style="width: 100px;">
+                <div class="ar-container">
+                    <a-scene embedded arjs='sourceType: "image"; sourceUrl: "markers/pattern-marker2.png"'>
+                        <a-assets>
+                            <a-asset-item id="model2" src="models/model2.glb"></a-asset-item>
+                        </a-assets>
+                        <a-marker preset="custom" url="markers/pattern-marker2.patt">
+                            <a-entity gltf-model="#model2" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+                        </a-marker>
+                        <a-entity camera></a-entity>
+                    </a-scene>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Model 3</h3>
+                <img src="markers/pattern-marker3.png" alt="Pattern Marker 3" style="width: 100px;">
+                <div class="ar-container">
+                    <a-scene embedded arjs='sourceType: "image"; sourceUrl: "markers/pattern-marker3.png"'>
+                        <a-assets>
+                            <a-asset-item id="model3" src="models/model3.glb"></a-asset-item>
+                        </a-assets>
+                        <a-marker preset="custom" url="markers/pattern-marker3.patt">
+                            <a-entity gltf-model="#model3" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+                        </a-marker>
+                        <a-entity camera></a-entity>
+                    </a-scene>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <h3>Model 4</h3>
+                <img src="markers/pattern-marker4.png" alt="Pattern Marker 4" style="width: 100px;">
+                <div class="ar-container">
+                    <a-scene embedded arjs='sourceType: "image"; sourceUrl: "markers/pattern-marker4.png"'>
+                        <a-assets>
+                            <a-asset-item id="model4" src="models/model4.glb"></a-asset-item>
+                        </a-assets>
+                        <a-marker preset="custom" url="markers/pattern-marker4.patt">
+                            <a-entity gltf-model="#model4" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+                        </a-marker>
+                        <a-entity camera></a-entity>
+                    </a-scene>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Model 5</h3>
+                <img src="markers/pattern-marker5.png" alt="Pattern Marker 5" style="width: 100px;">
+                <div class="ar-container">
+                    <a-scene embedded arjs='sourceType: "image"; sourceUrl: "markers/pattern-marker5.png"'>
+                        <a-assets>
+                            <a-asset-item id="model5" src="models/model5.glb"></a-asset-item>
+                        </a-assets>
+                        <a-marker preset="custom" url="markers/pattern-marker5.patt">
+                            <a-entity gltf-model="#model5" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+                        </a-marker>
+                        <a-entity camera></a-entity>
+                    </a-scene>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Model 6</h3>
+                <img src="markers/pattern-marker6.png" alt="Pattern Marker 6" style="width: 100px;">
+                <div class="ar-container">
+                    <a-scene embedded arjs='sourceType: "image"; sourceUrl: "markers/pattern-marker6.png"'>
+                        <a-assets>
+                            <a-asset-item id="model6" src="models/model6.glb"></a-asset-item>
+                        </a-assets>
+                        <a-marker preset="custom" url="markers/pattern-marker6.patt">
+                            <a-entity gltf-model="#model6" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+                        </a-marker>
+                        <a-entity camera></a-entity>
+                    </a-scene>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Explore More</h2>
+        <p>Navigate through our 3D museum and discover the fascinating history of computing. Each model can be viewed in 3D and augmented reality using image markers, giving you an immersive experience.</p>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 History of Computing. All rights reserved.</p>
+        <p>
+            <a href="#" class="text-white"><i class="fab fa-facebook fa-lg mx-2"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-twitter fa-lg mx-2"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram fa-lg mx-2"></i></a>
+        </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
